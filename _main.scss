@@ -1,0 +1,314 @@
+body, .page {
+    margin: 0;
+    font-family: Lato, sans-serif;
+    color: $font-color;
+    line-height: 1.5;
+
+    a {
+        color: $accent;
+    }
+}
+
+// Navigation
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: $spacer*1.5 $spacer*3;
+
+    .site-branding {
+        display: flex;
+        align-items: center;
+    }
+
+    .main-navigation {
+        display: flex;
+        flex-direction: column;
+
+        .menu-toggle {
+            // display: flex;
+            // justify-content: flex-end;
+            // align-items: center;
+            position: absolute;
+            border: none;
+            background: none;
+            padding: $spacer;
+            top: $spacer*1.5;
+            right: $spacer*3;
+        }
+
+        a {
+            margin-left: $spacer;
+            padding: $spacer/2;
+            color: $font-color;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.site-main {
+    padding: $spacer*1.5;
+
+    .entry-content {
+        .wp-block-columns {
+            .wp-block-column {
+                margin-bottom: 2em;
+                
+                figure {
+                    width: 80%;
+                    margin: 0 auto;
+                }
+            }
+
+            &:nth-child(odd) {
+                flex-direction: column;
+            }
+
+            &:nth-child(even) {
+                flex-direction: column-reverse;
+            }
+
+            &.contact {
+                flex-direction: column-reverse;
+
+                .wp-block-column {
+
+                    h1, p {
+                        text-align: left;
+                    }
+
+                    h1 {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        h2, p {
+            text-align: center;
+        }
+
+        .grid-client-logos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            grid-gap: $spacer*1.5;
+            margin-bottom: $spacer*3;
+        }
+
+        form {
+            label {
+                color: $label-color;
+                margin-bottom: $spacer;
+
+                .required {
+                    color: $accent;
+                }
+            }
+
+            input, select {
+                @include input-field;
+
+                &.button {
+                    background-color: $accent;
+                    color: #fff;
+                    display: inline-block;
+                    justify-content: center;
+                    align-items: center;
+                    padding: $spacer $spacer*2;
+                    cursor: pointer;
+                    border: 0;
+                    transition: .2s;
+                    margin: $spacer 0;
+                    font-size: $font-size-p;
+                    height: auto;
+                    width: auto;
+                }
+            }
+
+            textarea {
+                @include input-field;
+                min-height: 100px;
+            }
+        }
+    }
+}
+
+// Typografi
+
+h1 {
+    font-size: $font-size-p*1.5;
+    font-weight: 900;
+    text-align: center;
+    margin: 2em 0;
+}
+
+h2 {
+    font-size: $font-size-p*1.25;
+    margin: 0;
+}
+
+p {
+    font-size: $font-size-p;
+}
+
+footer {
+    background-color: $footer-color;
+    padding: $spacer*2;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+}
+
+@media screen and (min-width: 600px) {
+
+    .site-main {
+        padding: $spacer*3;
+        max-width: 1280px;
+        margin: 0 auto;
+
+        .entry-content {
+            .wp-block-columns {
+
+                .wp-block-column {
+
+                    figure {
+                        width: 66%;
+                    }
+                }
+            }
+
+            .grid-client-logos {
+                grid-template-columns: 1fr 1fr 1fr;
+                margin-bottom: $spacer*6;
+            }
+        }
+    }
+
+    // Navigation
+
+    .site-header {
+        flex-direction: row;
+
+        .main-navigation {
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    }
+
+    // Typografi
+    
+    h1 {
+        font-size: $font-size-p*2;
+        margin: 2.5em 0;
+    }
+
+    h2 {
+        font-size: $font-size-p*1.5;
+    }
+
+    footer {
+        padding: $spacer*4;
+
+        ul {
+            margin: 0 auto;
+
+            li {
+                display: inline-block;
+                margin-bottom: $spacer;
+            }
+    
+            .footer-link {
+                margin-right: $spacer;
+                padding: $spacer/2 0;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 800px) {
+
+    .site-main {
+        .entry-content {
+
+            .wp-block-columns.contact {
+                flex-direction: row;
+            }
+        
+            .news-form {
+                display: flex;
+                justify-content: space-between;
+        
+                .form-column {
+                    min-width: 25%;
+                    margin-bottom: $spacer;
+                    padding: 0 $spacer;
+        
+                    input.button {
+                        margin-top: 22px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+
+    .site-main {
+        
+
+        .entry-content {
+            .wp-block-columns {
+                margin-bottom: 4em;
+
+                .wp-block-column {
+                    margin-bottom: 0;
+                    max-width: 50%;
+
+                    h2, p {
+                        text-align: left;
+                    }
+
+                    figure {
+                        width: 100%;
+                    }
+                }
+    
+                &:nth-child(odd), &:nth-child(even) {
+                    flex-direction: row;
+                }
+            }
+
+            .grid-client-logos {
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                margin-bottom: $spacer*9;
+            }
+        }
+    }
+
+    // Typografi
+    
+    h1 {
+        font-size: $font-size-p*2.5;
+        margin: 3em 0;
+    }
+
+    h2 {
+        font-size: $font-size-p*2;
+    }
+
+    footer {
+        padding: $spacer*6;
+    }
+}
